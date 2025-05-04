@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ExpectedList {
-    public static List<String> SortedNamesAZ() {
-
+    public static List<String> sortedNamesAZ() {
         return Arrays.asList(
             "Sauce Labs Backpack",
             "Sauce Labs Bike Light",
@@ -16,7 +15,7 @@ public class ExpectedList {
         );
     }
 
-    public static List<String> SortedNamesZA() {
+    public static List<String> sortedNamesZA() {
         return Arrays.asList(
             "Test.allTheThings() T-Shirt (Red)",
             "Sauce Labs Onesie",
@@ -27,7 +26,7 @@ public class ExpectedList {
         );
     }
 
-    public static List<String> SortedPricesLH() {
+    public static List<String> sortedPricesLH() {
         return Arrays.asList(
             "$7.99",
             "$9.99",
@@ -38,7 +37,7 @@ public class ExpectedList {
         );
     }
     
-    public static List<String> SortedPricesHL() {
+    public static List<String> sortedPricesHL() {
         return Arrays.asList(
             "$49.99",
             "$29.99",
@@ -49,5 +48,3 @@ public class ExpectedList {
         );
     }
 }
-
-
