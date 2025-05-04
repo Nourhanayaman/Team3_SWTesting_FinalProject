@@ -22,7 +22,7 @@ public class loginTest  extends BaseTest {
     public loginPage loginPage;
     public inventoryPage inventoryPage;
 
-    @Test(dataProvider = "getLoginCredentials", dataProviderClass = users.class, description = "Check Login For all  accepted Users", groups = "login")
+    @Test(dataProvider = "getLoginCredentials", dataProviderClass = users.class,  groups = "login")
     public void testLogin(String username, String password) {
         loginPage = new loginPage(driver);
         driver.get("https://www.saucedemo.com/v1/index.html");
@@ -31,7 +31,7 @@ public class loginTest  extends BaseTest {
         loginPage.enterPassword(password);
         inventoryPage = loginPage.clickLoginButton();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(inventoryPage.productTitleLocator));
             WebElement productTitle = inventoryPage.getProductTitle();
@@ -41,15 +41,16 @@ public class loginTest  extends BaseTest {
         }
     }
 
+
+
+
     @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
     public void logoutBtnVisabilityTest(String username, String password) {
         loginPage = new loginPage(driver);
-        driver.get("https://www.saucedemo.com/v1/index.html");
         loginPage.enterUserName(username);
         loginPage.enterPassword(password);
         inventoryPage = loginPage.clickLoginButton();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
         WebElement openMenuBtn = driver.findElement(By.cssSelector(".bm-burger-button > button"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", openMenuBtn);
@@ -67,12 +68,10 @@ public class loginTest  extends BaseTest {
     @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
     public void logoutTest(String username, String password) {
         loginPage = new loginPage(driver);
-        driver.get("https://www.saucedemo.com/v1/index.html");
         loginPage.enterUserName(username);
         loginPage.enterPassword(password);
         inventoryPage = loginPage.clickLoginButton();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
         WebElement openMenuBtn = driver.findElement(By.cssSelector(".bm-burger-button > button"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", openMenuBtn);
@@ -80,7 +79,6 @@ public class loginTest  extends BaseTest {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(inventoryPage.logoutButtonLocator));
         inventoryPage.logOut();
-        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(10));
         String currentUrl = driver.getCurrentUrl();
         Assert.assertEquals(currentUrl, "https://www.saucedemo.com/v1/index.html", "URL does not match the expected value.");
 
@@ -90,7 +88,6 @@ public class loginTest  extends BaseTest {
 
     @Test(dependsOnMethods = "logoutTest")
     public void accessRestrictedTest(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
         driver.get("https://www.saucedemo.com/v1/inventory.html");
         String currentUrl = driver.getCurrentUrl();
 
@@ -108,7 +105,6 @@ public class loginTest  extends BaseTest {
     @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
     public void sessionTermination(String username, String password) {
         loginPage = new loginPage(driver);
-        driver.get("https://www.saucedemo.com/v1/index.html");
         loginPage.enterUserName(username);
         loginPage.enterPassword(password);
         inventoryPage = loginPage.clickLoginButton();
@@ -125,8 +121,6 @@ public class loginTest  extends BaseTest {
         inventoryPage = loginPage.clickLoginButton();
 
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-
 
 
         WebElement openMenuBtn = driver.findElement(By.cssSelector(".bm-burger-button > button"));
@@ -135,6 +129,7 @@ public class loginTest  extends BaseTest {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(inventoryPage.logoutButtonLocator));
         inventoryPage.logOut();
+
         driver.switchTo().window(tabs.get(1));
 
         driver.switchTo().window(tabs.get(0)); // Switch to the first tab

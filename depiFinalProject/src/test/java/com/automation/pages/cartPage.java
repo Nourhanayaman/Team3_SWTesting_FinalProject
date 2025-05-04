@@ -10,9 +10,10 @@ import java.time.Duration;
 public class cartPage {
     WebDriver addToCartDriver;
 
-    By CartBtnLocator = By.cssSelector("span.fa-layers-counter.shopping_cart_badge");
+    public By CartBtnLocator = By.xpath("//*[@id=\"shopping_cart_container\"]/a");
     By cartIcon = By.xpath("//svg[@data-icon='shopping-cart']");
-    By CartCounter = By.xpath("//a[contains(@class, 'shopping_cart_link')]//span[contains(@class, 'shopping_cart_badge')]");
+   public By CartCounter = By.xpath("//a[contains(@class, 'shopping_cart_link')]//span[contains(@class, 'shopping_cart_badge')]");
+   By removeBtnP1 = By.xpath("//*[@id=\"cart_contents_container\"]/div/div[1]/div[3]/div[2]/div[2]/button");
 
 
 
@@ -26,12 +27,15 @@ public class cartPage {
     }
 
     public int getCartItemCount() {
-        WebDriverWait wait = new WebDriverWait(addToCartDriver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(addToCartDriver, Duration.ofSeconds(20));
         WebElement badge = wait.until(ExpectedConditions.visibilityOfElementLocated(CartCounter));
 
         // Wait until text is non-empty (counter appears with a number)
         wait.until(driver -> !badge.getText().trim().isEmpty());
 
         return Integer.parseInt(badge.getText().trim());
+    }
+    public void clickRemoveBtnP1() {
+        this.addToCartDriver.findElement(removeBtnP1).click();
     }
 }

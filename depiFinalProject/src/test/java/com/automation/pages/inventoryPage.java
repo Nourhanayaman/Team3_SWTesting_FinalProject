@@ -17,9 +17,13 @@ public class inventoryPage {
     public By logoutButtonLocator = By.id("logout_sidebar_link");
     By footerLocator = By.className("footer");
 //    By CartBtnLocator = By.className("shopping_cart_link.fa-layers.fa-fw");
-//    By cartIcon = By.xpath("//svg[@data-icon='shopping-cart']");
-//    By addToCartButtons = By.className("btn_primary.btn_inventory");
-//    By removeFromCartButtons = By.className("btn_secondary.btn_inventory");
+    By product1BtnLocator = By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button");
+    By product2BtnLocator = By.xpath("//*[@id=\"inventory_container\"]/div/div[2]/div[3]/button");
+    By product3BtnLocator = By.xpath("//*[@id=\"inventory_container\"]/div/div[3]/div[3]/button");
+    By product4BtnLocator = By.xpath("//*[@id=\"inventory_container\"]/div/div[4]/div[3]/button");
+    By product5BtnLocator = By.xpath("//*[@id=\"inventory_container\"]/div/div[5]/div[3]/button");
+    By product6BtnLocator = By.xpath("//*[@id=\"inventory_container\"]/div/div[6]/div[3]/button");
+
 
 
     public inventoryPage(WebDriver driver) {
@@ -58,6 +62,32 @@ public class inventoryPage {
     public void clickOnMenuBtn(){
         inventoryDriver.findElement(burgerMenuLocator).click();
     }
+
+
+
+    public void clickOnaddToCartP1(){
+        inventoryDriver.findElement(product1BtnLocator).click();
+    }
+    public void clickOnaddToCartP2(){
+        inventoryDriver.findElement(product2BtnLocator).click();
+
+    }
+    public void clickOnaddToCartP3(){
+        inventoryDriver.findElement(product3BtnLocator).click();
+    }
+    public void clickOnaddToCartP4(){
+
+        inventoryDriver.findElement(product4BtnLocator).click();
+    }
+    public void clickOnaddToCartP5(){
+
+        inventoryDriver.findElement(product5BtnLocator).click();
+    }
+    public void clickOnaddToCartP6(){
+        inventoryDriver.findElement(product6BtnLocator).click();
+    }
+
+
 //    public cartPage clickOnCart() {
 //        inventoryDriver.findElement(CartBtnLocator).click();
 //        return new cartPage(inventoryDriver);
