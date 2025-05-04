@@ -26,8 +26,6 @@ public class BaseTest {
 
     @BeforeClass
     public void setUp() throws InterruptedException {
-
-
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--incognito");
 
@@ -36,11 +34,7 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/v1/index.html");
 
-
-
-
     }
-
 
 
     @AfterClass
