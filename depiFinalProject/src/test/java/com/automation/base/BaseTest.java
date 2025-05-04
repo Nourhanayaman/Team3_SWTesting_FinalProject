@@ -26,24 +26,20 @@ public class BaseTest {
 
     @BeforeClass
     public void setUp() throws InterruptedException {
-        ChromeOptions options= new ChromeOptions();
-        options.setExperimentalOption("excludeSwitches", Arrays.asList("disable-popup-blocking"));
+
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito");
+
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com/v1/index.html");
 
-        try {
-            Thread.sleep(3000);  // replace with WebDriverWait if needed
-            Alert alert = driver.switchTo().alert();
-            alert.dismiss();  // or alert.accept()
-        } catch (NoAlertPresentException e) {
-            System.out.println("No alert found.");
-        }
+
+
+
     }
-
-
-
 
 
 

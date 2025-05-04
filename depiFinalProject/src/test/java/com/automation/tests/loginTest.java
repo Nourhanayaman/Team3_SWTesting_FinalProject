@@ -14,46 +14,26 @@ import com.automation.dataProviders.users;
 import java.time.Duration;
 import java.util.Arrays;
 
+import static org.testng.Assert.assertEquals;
+
 public class loginTest  extends BaseTest {
     public loginPage loginPage;
     public inventoryPage inventoryPage;
 
-
-
     @Test(dataProvider = "getLoginCredentials", dataProviderClass = users.class, description = "Check Login For all  accepted Users", groups = "login")
     public void testLogin(String username, String password) {
-
         loginPage = new loginPage(driver);
         driver.get("https://www.saucedemo.com/v1/index.html");
 
-
-
-//        // Wait until the username field is visible and perform login
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name")));
         loginPage.enterUserName(username);
         loginPage.enterPassword(password);
         inventoryPage = loginPage.clickLoginButton();
-        try {
-            Thread.sleep(3000);  // replace with WebDriverWait if needed
-            Alert alert = driver.switchTo().alert();
-            alert.dismiss();  // or alert.accept()
-        } catch (NoAlertPresentException | InterruptedException e) {
-            System.out.println("No alert found.");
-        }
 
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfElementLocated(inventoryPage.productTitleLocator));
 
         Assert.assertTrue(inventoryPage.getProductTitle().isDisplayed(), "Login failed or product title not visible.");
-
-
-        // Wait until the login field is present before proceeding
-        WebDriverWait timewait = new WebDriverWait(driver, Duration.ofSeconds(20));
-
-
     }
-
 
 }
 
