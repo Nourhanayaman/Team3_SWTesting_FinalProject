@@ -88,29 +88,5 @@ public class inventoryPage {
     }
 
 
-//    public cartPage clickOnCart() {
-//        inventoryDriver.findElement(CartBtnLocator).click();
-//        return new cartPage(inventoryDriver);
-//    }
-//    public void addAllProductsToCart() {
-//        List<WebElement> buttons = inventoryDriver.findElements(addToCartButtons);
-//        for (WebElement btn : buttons) {
-//            btn.click();
-//        }
-//        // Wait until cart is updated (i.e., items are in cart)
-//        new WebDriverWait(inventoryDriver, Duration.ofSeconds(5)).until(driver ->
-//                driver.findElements(removeFromCartButtons).size() == buttons.size()
-//        );
-//    }
-//
-//
-//   public void removeFromCart() {
-//        inventoryDriver.findElement(removeFromCartButtons).click();
-//   }
-//
-//    public int getCountOfProductsInCart() {
-//        int   count = inventoryDriver.findElements(removeFromCartButtons).size();
-//        return count;
-//    }
 
 }

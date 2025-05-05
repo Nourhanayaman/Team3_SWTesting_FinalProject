@@ -22,7 +22,9 @@ public class loginTest  extends BaseTest {
     public loginPage loginPage;
     public inventoryPage inventoryPage;
 
-    @Test(dataProvider = "getLoginCredentials", dataProviderClass = users.class,  groups = "login")
+
+    // Test should assert true for the first 3 users then fail for the rest
+    @Test(dataProvider = "getLoginCredentials", dataProviderClass = users.class,  groups = "login" )
     public void testLogin(String username, String password) {
         loginPage = new loginPage(driver);
         driver.get("https://www.saucedemo.com/v1/index.html");
@@ -43,7 +45,7 @@ public class loginTest  extends BaseTest {
 
 
 
-
+    // Test should assert true
     @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
     public void logoutBtnVisabilityTest(String username, String password) {
         loginPage = new loginPage(driver);
@@ -64,9 +66,12 @@ public class loginTest  extends BaseTest {
 
 
     }
-
+    //test pass alone and fail  when running the class
+    // Test should assert true
     @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
     public void logoutTest(String username, String password) {
+
+
         loginPage = new loginPage(driver);
         loginPage.enterUserName(username);
         loginPage.enterPassword(password);
@@ -85,7 +90,8 @@ public class loginTest  extends BaseTest {
 
 
     }
-
+    //ignored when logout failed when running all the class
+    // Test should assert fail
     @Test(dependsOnMethods = "logoutTest")
     public void accessRestrictedTest(){
         driver.get("https://www.saucedemo.com/v1/inventory.html");
@@ -100,11 +106,14 @@ public class loginTest  extends BaseTest {
 
     }
 
-
-
+    // Test fails when run all the class but assert fail when run alone
+    //can't locate the username locator
+    // Test should assert fail
     @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
     public void sessionTermination(String username, String password) {
+
         loginPage = new loginPage(driver);
+
         loginPage.enterUserName(username);
         loginPage.enterPassword(password);
         inventoryPage = loginPage.clickLoginButton();
@@ -133,7 +142,7 @@ public class loginTest  extends BaseTest {
         driver.switchTo().window(tabs.get(1));
 
         driver.switchTo().window(tabs.get(0)); // Switch to the first tab
-        driver.navigate().refresh(); // Refresh the page
+        driver.navigate().refresh();
 
         String currentUrl = driver.getCurrentUrl();
         Assert.assertEquals(currentUrl, "https://www.saucedemo.com/v1/index.html", "Session is not terminated");

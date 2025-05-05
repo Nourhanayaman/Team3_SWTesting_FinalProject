@@ -25,7 +25,7 @@ public class cartTest  extends BaseTest {
 
 
 
-
+//The Test should assert true
     @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
     public void testAddAllProductsToCart(String username, String password) {
 
@@ -57,7 +57,7 @@ public class cartTest  extends BaseTest {
 
 
 
-
+// Test should assert true
     @Test(dependsOnMethods ="testAddAllProductsToCart")
     public void testremoveAllProductsFromCart() {
 
@@ -78,6 +78,8 @@ public class cartTest  extends BaseTest {
         Assert.assertTrue(isCartBadgeInvisible, "Cart badge should disappear after removing all products.");
     }
 
+
+    // Test should assert fail
     @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
     public void CartPersistenceTest(String username, String password) {
 
@@ -130,6 +132,7 @@ public class cartTest  extends BaseTest {
 
 
 // when run alone pass when run in the class with all tests fail
+// Test should assert true
     @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
     public void removeBtnOfCartPageTest(String username, String password) {
         WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(40));
@@ -166,7 +169,7 @@ public class cartTest  extends BaseTest {
 
     }
 
-
+    // Test should assert true
     @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
     public void CartBtnVisabilityTest(String username, String password) {
         loginPage = new loginPage(driver);
