@@ -22,11 +22,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 import org.openqa.selenium.WebDriver;
+import io.qameta.allure.Allure;
+import io.qameta.allure.testng.AllureTestNg;
+import org.testng.annotations.Listeners;
 
-import static java.awt.SystemColor.window;
-import static java.lang.Thread.sleep;
-import static org.apache.commons.lang3.function.FailableFunction.function;
 
+@Listeners(AllureTestNg.class)
 public class BaseTest {
 
     public WebDriver driver;
@@ -37,7 +38,7 @@ public class BaseTest {
     private static final String SCREENSHOT_FOLDER = "./TestsScreenshots/";
 
 
-    @Attachment(value = "Screenshot", type = "image/png")
+    @Attachment(value = "{testName} - Screenshot", type = "image/png")
     public byte[] takeScreenshotAndSave(String testName) {
         byte[] screenshotBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 

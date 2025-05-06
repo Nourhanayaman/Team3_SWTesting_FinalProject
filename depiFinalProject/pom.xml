@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -46,6 +46,11 @@
             <artifactId>allure-testng</artifactId>
             <version>2.27.0</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>2.14.0</version> <!-- Ensure to use the latest version -->
+        </dependency>
 
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
@@ -56,18 +61,38 @@
 
     <build>
         <plugins>
-            <!-- Allure plugin -->
+
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
                 <version>2.11.2</version>
             </plugin>
+
+            <!-- Surefire plugin with combined config -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
+                <configuration>
+                    <!-- Run even if some tests fail -->
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <includes>
+                        <include>**/*Tests.java</include>
+                        <include>**/Testing.java</include>
+                        <include>loginTest.java</include>
+                        <include>cartTest.java</include>
+                        <include>checkout1.java</include>
+                        <include>checkout2.java</include>
+                        <include>ProdSort.java</include>
+                        <include>RemoveProductFromCart.java</include>
+                        <include>SortModeReset.java</include>
+                        <include>SortPerform.java</include>
+                        <include>ViewProductTest.java</include>
+                    </includes>
+                </configuration>
             </plugin>
 
+            <!-- Exec plugin -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -76,19 +101,7 @@
                     <mainClass>com.example.Main</mainClass>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
-                <configuration>
-                <testFailureIgnore>true</testFailureIgnore>
-                <includes>
-                <include>**/*Tests.java</include>
-                <include>**/Testing.java</include>
-                </includes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
+
 </project>
