@@ -1,1 +1,22 @@
 # Team3_SWTesting_FinalProject
+Swag Labs Software Testing Project
+Website under test: Swag Labs
+
+📌 Introduction
+This repository is dedicated to testing the Swag Labs e-commerce platform. The goal of the project is to evaluate the site’s functionality, usability, and reliability using both manual and automated testing approaches. Through detailed test case design, test automation frameworks, and systematic reporting, we aim to ensure the quality and robustness of the Swag Labs application.
+
+🎯 Project Scope
+Our project focuses on:
+Understanding the Swag Labs system and its user flows.
+Designing and executing comprehensive manual test cases.
+Implementing automated tests using modern frameworks and best practices.
+Identifying, documenting, and tracking bugs with clear linkage to user stories and test cases.
+Reporting and visualizing test results and metrics.
+
+
+[Group 3 Members]
+-Belal Wael Nasser 
+-Nourhan Ayman Sharaf Aldin -------> [Manual] 15 Test Cases & 5 Issues / [Automation] 5 for Login/logout  AND 5 for Add to Cart
+-Noureen Alaa Hady
+-Abdullah mahmoud Kamel
+-youssef Khaled Samir
