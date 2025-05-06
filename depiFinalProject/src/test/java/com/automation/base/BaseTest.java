@@ -8,10 +8,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
-
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,10 +16,7 @@ import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-
 import org.openqa.selenium.WebDriver;
-import io.qameta.allure.Allure;
 import io.qameta.allure.testng.AllureTestNg;
 import org.testng.annotations.Listeners;
 
@@ -31,10 +25,7 @@ import org.testng.annotations.Listeners;
 public class BaseTest {
 
     public WebDriver driver;
-
     public WebDriverWait wait;
-
-
     private static final String SCREENSHOT_FOLDER = "./TestsScreenshots/";
 
 

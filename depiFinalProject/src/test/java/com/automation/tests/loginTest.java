@@ -24,11 +24,9 @@ public class loginTest  extends BaseTest {
     public void testLogin(String username, String password) {
         loginPage = new loginPage(driver);
         driver.get("https://www.saucedemo.com/v1/index.html");
-
         loginPage.enterUserName(username);
         loginPage.enterPassword(password);
         inventoryPage = loginPage.clickLoginButton();
-
 
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(inventoryPage.productTitleLocator));
@@ -49,10 +47,8 @@ public class loginTest  extends BaseTest {
         loginPage.enterPassword(password);
         inventoryPage = loginPage.clickLoginButton();
 
-
         WebElement openMenuBtn = driver.findElement(By.cssSelector(".bm-burger-button > button"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", openMenuBtn);
-
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(inventoryPage.logoutButtonLocator));
 
@@ -60,8 +56,8 @@ public class loginTest  extends BaseTest {
         WebElement logoutButton = driver.findElement(inventoryPage.logoutButtonLocator);
         Assert.assertTrue(logoutButton.isDisplayed(), "Logout button is not visible.");
 
-
     }
+
     //test pass alone and fail  when running the class
     // Test should assert true
     @Test(dataProvider = "defaultUser", dataProviderClass = users.class ,priority = 4)
@@ -73,10 +69,8 @@ public class loginTest  extends BaseTest {
         loginPage.enterPassword(password);
         inventoryPage = loginPage.clickLoginButton();
 
-
         WebElement openMenuBtn = driver.findElement(By.cssSelector(".bm-burger-button > button"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", openMenuBtn);
-
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(inventoryPage.logoutButtonLocator));
         inventoryPage.logOut();
@@ -98,8 +92,6 @@ public class loginTest  extends BaseTest {
         } else {
             Assert.assertTrue(currentUrl.contains("index.html"), "User was correctly redirected after attempting restricted access.");
         }
-
-
     }
 
     // Test fails when run all the class but assert fail when run alone
@@ -109,12 +101,9 @@ public class loginTest  extends BaseTest {
     public void sessionTermination(String username, String password) {
 
         loginPage = new loginPage(driver);
-
         loginPage.enterUserName(username);
         loginPage.enterPassword(password);
         inventoryPage = loginPage.clickLoginButton();
-
-
 
         ((JavascriptExecutor) driver).executeScript("window.open();");
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
@@ -125,12 +114,8 @@ public class loginTest  extends BaseTest {
         loginPage.enterPassword(password);
         inventoryPage = loginPage.clickLoginButton();
 
-
-
-
         WebElement openMenuBtn = driver.findElement(By.cssSelector(".bm-burger-button > button"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", openMenuBtn);
-
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(inventoryPage.logoutButtonLocator));
         inventoryPage.logOut();
@@ -142,10 +127,6 @@ public class loginTest  extends BaseTest {
 
         String currentUrl = driver.getCurrentUrl();
         Assert.assertEquals(currentUrl, "https://www.saucedemo.com/v1/index.html", "Session is not terminated");
-
-
-
-
 
     }
 

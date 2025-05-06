@@ -14,25 +14,23 @@ public class cartPage {
 
     public By CartBtnLocator = By.id("shopping_cart_container");
     public By CartCounter = By.cssSelector("a.shopping_cart_link > span.shopping_cart_badge");
-    By removeBtnP1 = By.cssSelector("#cart_contents_container .cart_item:nth-child(3) .item_pricebar button");
+    public By removeBtnP1 = By.cssSelector("#cart_contents_container .cart_item:nth-child(3) .item_pricebar button");
 
 
-    // By addToCartBtnLocator = By.className("shopping_cart_link.fa-layers.fa-fw");
     public cartPage(WebDriver driver) {
+
         this.addToCartDriver = driver;
     }
 
     public void clickCart() {
+
         this.addToCartDriver.findElement(CartBtnLocator).click();
     }
 
     public int getCartItemCount() {
         WebDriverWait wait = new WebDriverWait(addToCartDriver, Duration.ofSeconds(20));
         WebElement badge = wait.until(ExpectedConditions.visibilityOfElementLocated(CartCounter));
-
-        // Wait until text is non-empty (counter appears with a number)
-        wait.until(driver -> !badge.getText().trim().isEmpty());
-
+        wait.until(driver -> !badge.getText().trim().isEmpty());  // Wait until text is non-empty (counter appears with a number)
         return Integer.parseInt(badge.getText().trim());
     }
     public void clickRemoveBtnP1() {

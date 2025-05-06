@@ -14,23 +14,23 @@ public class inventoryPage {
 
     //Locators
     public By productTitleLocator = By.className("inventory_item_name");
-    public By burgerMenuLocator =By.cssSelector(".bm-burger-button > button");
     public By logoutButtonLocator = By.id("logout_sidebar_link");
-    By footerLocator = By.className("footer");
-//    By CartBtnLocator = By.className("shopping_cart_link.fa-layers.fa-fw");
-    By product1BtnLocator = By.xpath("//*[@id=\"inventory_container\"]/div/div[1]/div[3]/button");
-    By product2BtnLocator = By.xpath("//*[@id=\"inventory_container\"]/div/div[2]/div[3]/button");
-    By product3BtnLocator = By.xpath("//*[@id=\"inventory_container\"]/div/div[3]/div[3]/button");
-    By product4BtnLocator = By.xpath("//*[@id=\"inventory_container\"]/div/div[4]/div[3]/button");
-    By product5BtnLocator = By.xpath("//*[@id=\"inventory_container\"]/div/div[5]/div[3]/button");
-    By product6BtnLocator = By.xpath("//*[@id=\"inventory_container\"]/div/div[6]/div[3]/button");
+    By product1BtnLocator = By.cssSelector("#inventory_container > div > div:nth-child(1) > div:nth-child(3) > button");
+    By product2BtnLocator = By.cssSelector("#inventory_container > div > div:nth-child(2) > div:nth-child(3) > button");
+    By product3BtnLocator = By.cssSelector("#inventory_container > div > div:nth-child(3) > div:nth-child(3) > button");
+    By product4BtnLocator = By.cssSelector("#inventory_container > div > div:nth-child(4) > div:nth-child(3) > button");
+    By product5BtnLocator = By.cssSelector("#inventory_container > div > div:nth-child(5) > div:nth-child(3) > button");
+    By product6BtnLocator = By.cssSelector("#inventory_container > div > div:nth-child(6) > div:nth-child(3) > button");
+
 
 
 
     public inventoryPage(WebDriver driver) {
+
         this.inventoryDriver = driver;
     }
     public WebElement getProductTitle() {
+
         return inventoryDriver.findElement(productTitleLocator);
     }
 
@@ -48,25 +48,9 @@ public class inventoryPage {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    public  WebElement getFooter(){
-        return inventoryDriver.findElement(footerLocator);
-    }
-
-    public WebElement waitForProductTitle() {
-        new WebDriverWait(inventoryDriver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(productTitleLocator));
-        return getProductTitle();
-    }
-
-
-
-    public void clickOnMenuBtn(){
-        inventoryDriver.findElement(burgerMenuLocator).click();
-    }
-
-
 
     public void clickOnaddToCartP1(){
+
         inventoryDriver.findElement(product1BtnLocator).click();
     }
     public void clickOnaddToCartP2(){
@@ -74,6 +58,7 @@ public class inventoryPage {
 
     }
     public void clickOnaddToCartP3(){
+
         inventoryDriver.findElement(product3BtnLocator).click();
     }
     public void clickOnaddToCartP4(){
@@ -85,33 +70,10 @@ public class inventoryPage {
         inventoryDriver.findElement(product5BtnLocator).click();
     }
     public void clickOnaddToCartP6(){
+
         inventoryDriver.findElement(product6BtnLocator).click();
     }
 
 
-//    public cartPage clickOnCart() {
-//        inventoryDriver.findElement(CartBtnLocator).click();
-//        return new cartPage(inventoryDriver);
-//    }
-//    public void addAllProductsToCart() {
-//        List<WebElement> buttons = inventoryDriver.findElements(addToCartButtons);
-//        for (WebElement btn : buttons) {
-//            btn.click();
-//        }
-//        // Wait until cart is updated (i.e., items are in cart)
-//        new WebDriverWait(inventoryDriver, Duration.ofSeconds(5)).until(driver ->
-//                driver.findElements(removeFromCartButtons).size() == buttons.size()
-//        );
-//    }
-//
-//
-//   public void removeFromCart() {
-//        inventoryDriver.findElement(removeFromCartButtons).click();
-//   }
-//
-//    public int getCountOfProductsInCart() {
-//        int   count = inventoryDriver.findElements(removeFromCartButtons).size();
-//        return count;
-//    }
 
 }

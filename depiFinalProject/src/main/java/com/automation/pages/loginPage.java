@@ -16,23 +16,25 @@ public class loginPage {
 
     //Locators
     public By userNameLocator = By.id("user-name");
-    By passwordLocator = By.id("password");
-    By loginButtonLocator = By.id("login-button");
-
+    public By passwordLocator = By.id("password");
+    public By loginButtonLocator = By.id("login-button");
 
 
     //constructor
     public loginPage(WebDriver driver) {
+
         this.loginDriver = driver;
     }
 
     //Actions
     public void enterUserName(String userName) {
+
         loginDriver.findElement(userNameLocator).sendKeys(userName);
     }
 
 
     public void enterPassword(String password) {
+
         loginDriver.findElement(passwordLocator).sendKeys(password);
     }
 
@@ -44,18 +46,5 @@ public class loginPage {
         return new inventoryPage(loginDriver);
 
     }
-
-    public void dismissChangePasswordPopupIfPresent() {
-        try {
-            WebDriverWait wait = new WebDriverWait(loginDriver, Duration.ofSeconds(5));
-            WebElement popup = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("change-password-modal")));
-            WebElement dismissButton = popup.findElement(By.cssSelector(".close-button, .cancel, .dismiss")); // adjust selector
-            dismissButton.click();
-        } catch (TimeoutException e) {
-            // Popup not present, safe to ignore
-        }
-    }
-
-
 
 }

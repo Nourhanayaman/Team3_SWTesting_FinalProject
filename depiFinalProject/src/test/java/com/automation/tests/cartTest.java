@@ -12,8 +12,6 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import com.automation.dataProviders.users;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-
 import java.time.Duration;
 
 public class cartTest  extends BaseTest {
@@ -33,8 +31,6 @@ public class cartTest  extends BaseTest {
         loginPage.enterUserName(username);
         loginPage.enterPassword(password);
         inventoryPage = loginPage.clickLoginButton();
-
-      //  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
 
         inventoryPage = new inventoryPage(driver);
@@ -90,7 +86,6 @@ public class cartTest  extends BaseTest {
         inventoryPage = loginPage.clickLoginButton();
 
 
-
         inventoryPage = new inventoryPage(driver);
         inventoryPage.clickOnaddToCartP1();
         inventoryPage.clickOnaddToCartP2();
@@ -143,7 +138,6 @@ public class cartTest  extends BaseTest {
         inventoryPage = loginPage.clickLoginButton();
 
 
-
         inventoryPage = new inventoryPage(driver);
         inventoryPage.clickOnaddToCartP1();
         inventoryPage.clickOnaddToCartP2();
@@ -153,17 +147,12 @@ public class cartTest  extends BaseTest {
 
         cartPage = new cartPage(driver);
 
-
-
         cartPage.clickCart();
 
         cartPage.clickRemoveBtnP1();
         int secondCount = cartPage.getCartItemCount();
          int expectedCount = 2;
         Assert.assertEquals(secondCount, expectedCount, "Cart count should match added product count.");
-
-
-
 
 
     }
@@ -179,11 +168,10 @@ public class cartTest  extends BaseTest {
 
         cartPage = new cartPage(driver);
 
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(cartPage.CartBtnLocator));
-        // Step 3: Assert that the Cart button is visible
+
         WebElement cartButton = driver.findElement(cartPage.CartBtnLocator);
-        Assert.assertTrue(cartButton.isDisplayed(), "Cart button is not visible.");
+        Assert.assertTrue(cartButton.isDisplayed(), "Cart button is not visible.");//Assert that the Cart button is visible
 
 
     }
