@@ -26,7 +26,7 @@ public class cartTest  extends BaseTest {
 
 
 //The Test should assert true
-    @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
+    @Test(dataProvider = "defaultUser", dataProviderClass = users.class,priority = 1)
     public void testAddAllProductsToCart(String username, String password) {
 
         loginPage = new loginPage(driver);
@@ -58,7 +58,7 @@ public class cartTest  extends BaseTest {
 
 
 // Test should assert true
-    @Test(dependsOnMethods ="testAddAllProductsToCart")
+    @Test(dependsOnMethods ="testAddAllProductsToCart", priority = 2)
     public void testremoveAllProductsFromCart() {
 
 
@@ -80,7 +80,7 @@ public class cartTest  extends BaseTest {
 
 
     // Test should assert fail
-    @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
+    @Test(dataProvider = "defaultUser", dataProviderClass = users.class ,priority = 4)
     public void CartPersistenceTest(String username, String password) {
 
 
@@ -133,7 +133,7 @@ public class cartTest  extends BaseTest {
 
 // when run alone pass when run in the class with all tests fail
 // Test should assert true
-    @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
+    @Test(dataProvider = "defaultUser", dataProviderClass = users.class , priority = 5)
     public void removeBtnOfCartPageTest(String username, String password) {
         WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(40));
         loginPage = new loginPage(driver);
@@ -170,7 +170,7 @@ public class cartTest  extends BaseTest {
     }
 
     // Test should assert true
-    @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
+    @Test(dataProvider = "defaultUser", dataProviderClass = users.class , priority = 3)
     public void CartBtnVisabilityTest(String username, String password) {
         loginPage = new loginPage(driver);
         driver.get("https://www.saucedemo.com/v1/index.html");

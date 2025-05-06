@@ -24,7 +24,7 @@ public class loginTest  extends BaseTest {
 
 
     // Test should assert true for the first 3 users then fail for the rest
-    @Test(dataProvider = "getLoginCredentials", dataProviderClass = users.class,  groups = "login" )
+    @Test(dataProvider = "getLoginCredentials", dataProviderClass = users.class, priority = 1)
     public void testLogin(String username, String password) {
         loginPage = new loginPage(driver);
         driver.get("https://www.saucedemo.com/v1/index.html");
@@ -46,7 +46,7 @@ public class loginTest  extends BaseTest {
 
 
     // Test should assert true
-    @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
+    @Test(dataProvider = "defaultUser", dataProviderClass = users.class ,priority = 3)
     public void logoutBtnVisabilityTest(String username, String password) {
         loginPage = new loginPage(driver);
         loginPage.enterUserName(username);
@@ -68,7 +68,7 @@ public class loginTest  extends BaseTest {
     }
     //test pass alone and fail  when running the class
     // Test should assert true
-    @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
+    @Test(dataProvider = "defaultUser", dataProviderClass = users.class ,priority = 4)
     public void logoutTest(String username, String password) {
 
 
@@ -92,7 +92,7 @@ public class loginTest  extends BaseTest {
     }
     //ignored when logout failed when running all the class
     // Test should assert fail
-    @Test(dependsOnMethods = "logoutTest")
+    @Test(dependsOnMethods = "logoutTest" ,priority = 5 )
     public void accessRestrictedTest(){
         driver.get("https://www.saucedemo.com/v1/inventory.html");
         String currentUrl = driver.getCurrentUrl();
@@ -109,7 +109,7 @@ public class loginTest  extends BaseTest {
     // Test fails when run all the class but assert fail when run alone
     //can't locate the username locator
     // Test should assert fail
-    @Test(dataProvider = "defaultUser", dataProviderClass = users.class)
+    @Test(dataProvider = "defaultUser", dataProviderClass = users.class ,priority = 2)
     public void sessionTermination(String username, String password) {
 
         loginPage = new loginPage(driver);
