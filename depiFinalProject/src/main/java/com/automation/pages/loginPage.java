@@ -1,10 +1,11 @@
 package com.automation.pages;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
 
@@ -44,6 +45,16 @@ public class loginPage {
 
     }
 
+    public void dismissChangePasswordPopupIfPresent() {
+        try {
+            WebDriverWait wait = new WebDriverWait(loginDriver, Duration.ofSeconds(5));
+            WebElement popup = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("change-password-modal")));
+            WebElement dismissButton = popup.findElement(By.cssSelector(".close-button, .cancel, .dismiss")); // adjust selector
+            dismissButton.click();
+        } catch (TimeoutException e) {
+            // Popup not present, safe to ignore
+        }
+    }
 
 
 

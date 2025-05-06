@@ -3,8 +3,6 @@ import com.automation.base.BaseTest;
 import com.automation.pages.loginPage;
 import com.automation.pages.inventoryPage;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -13,9 +11,7 @@ import com.automation.dataProviders.users;
 
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import static org.bouncycastle.cms.RecipientId.password;
 import static org.testng.Assert.assertEquals;
 
 public class loginTest  extends BaseTest {
@@ -70,7 +66,7 @@ public class loginTest  extends BaseTest {
     // Test should assert true
     @Test(dataProvider = "defaultUser", dataProviderClass = users.class ,priority = 4)
     public void logoutTest(String username, String password) {
-
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
         loginPage = new loginPage(driver);
         loginPage.enterUserName(username);

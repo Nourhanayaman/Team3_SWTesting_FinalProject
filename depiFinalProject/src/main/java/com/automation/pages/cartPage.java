@@ -1,20 +1,20 @@
 package com.automation.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
 public class cartPage {
     WebDriver addToCartDriver;
 
-    public By CartBtnLocator = By.xpath("//*[@id=\"shopping_cart_container\"]/a");
-    By cartIcon = By.xpath("//svg[@data-icon='shopping-cart']");
-   public By CartCounter = By.xpath("//a[contains(@class, 'shopping_cart_link')]//span[contains(@class, 'shopping_cart_badge')]");
-   By removeBtnP1 = By.xpath("//*[@id=\"cart_contents_container\"]/div/div[1]/div[3]/div[2]/div[2]/button");
 
+    public By CartBtnLocator = By.id("shopping_cart_container");
+    public By CartCounter = By.cssSelector("a.shopping_cart_link > span.shopping_cart_badge");
+    By removeBtnP1 = By.cssSelector("#cart_contents_container .cart_item:nth-child(3) .item_pricebar button");
 
 
     // By addToCartBtnLocator = By.className("shopping_cart_link.fa-layers.fa-fw");

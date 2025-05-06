@@ -3,7 +3,6 @@ import com.automation.base.BaseTest;
 import com.automation.pages.loginPage;
 import com.automation.pages.inventoryPage;
 import com.automation.pages.cartPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -106,7 +105,7 @@ public class cartTest  extends BaseTest {
         options.addArguments("--incognito");
 
         WebDriver driver2 = new ChromeDriver(options);
-        WebDriverWait wait2 = new WebDriverWait(driver2, Duration.ofSeconds(20));
+         wait= new WebDriverWait(driver2, Duration.ofSeconds(20));
         driver2.get("https://www.saucedemo.com/v1/index.html");
 
         try {
@@ -135,7 +134,8 @@ public class cartTest  extends BaseTest {
 // Test should assert true
     @Test(dataProvider = "defaultUser", dataProviderClass = users.class , priority = 5)
     public void removeBtnOfCartPageTest(String username, String password) {
-        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(40));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
         loginPage = new loginPage(driver);
         driver.get("https://www.saucedemo.com/v1/index.html");
         loginPage.enterUserName(username);
@@ -148,16 +148,15 @@ public class cartTest  extends BaseTest {
         inventoryPage.clickOnaddToCartP1();
         inventoryPage.clickOnaddToCartP2();
         inventoryPage.clickOnaddToCartP3();
-        wait2 = new WebDriverWait(driver, Duration.ofSeconds(40));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-      //  wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@class, 'shopping_cart_link')]//span[contains(@class, 'shopping_cart_badge')]")));
+
+         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
         cartPage = new cartPage(driver);
-        wait2 = new WebDriverWait(driver, Duration.ofSeconds(40));
-        int FirstCount = cartPage.getCartItemCount();
+
+
 
         cartPage.clickCart();
-        wait2 = new WebDriverWait(driver, Duration.ofSeconds(40));
+
         cartPage.clickRemoveBtnP1();
         int secondCount = cartPage.getCartItemCount();
          int expectedCount = 2;

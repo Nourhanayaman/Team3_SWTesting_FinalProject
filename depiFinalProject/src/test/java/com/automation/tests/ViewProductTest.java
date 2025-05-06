@@ -1,33 +1,17 @@
 
 package com.automation.tests;
 import com.automation.base.BaseTest;
-import com.automation.pages.loginPage;
-import com.automation.pages.inventoryPage;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
-import org.testng.annotations.*;
 
 import java.util.List;
-import com.automation.dataProviders.users;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Arrays;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-import java.util.List;
-import java.util.Map;
-
-import static org.bouncycastle.cms.RecipientId.password;
 import static org.testng.Assert.assertEquals;
 public class ViewProductTest extends BaseTest {
 
