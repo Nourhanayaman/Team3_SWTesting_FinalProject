@@ -6,8 +6,10 @@ import org.openqa.selenium.WebDriver;
 
 public class removeProduct {
     WebDriver driver;
-    By removeButton = By.xpath("//button[@class()='cart_button']");
-//constructor
+//    By removeButton = By.xpath("//button[@class()='cart_button']");
+By removeButton = By.xpath("//button[contains(@class, 'cart_button')]");
+
+    //constructor
     public removeProduct(WebDriver driver) {
         this.driver = driver;
     }

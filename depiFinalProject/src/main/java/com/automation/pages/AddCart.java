@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver;
 
 public class  AddCart{
     WebDriver driver;
-    By addToCartButton=By.xpath("//button[@class='btn_inventory'][1])");
+//    By addToCartButton=By.xpath("//button[@class='btn_inventory'][1])");
+By addToCartButton = By.xpath("(//button[contains(@class, 'btn_inventory')])[1]");
+
     By cartIcon=By.className("shopping_cart_link");
         //constructor
 public AddCart(WebDriver driver) {
