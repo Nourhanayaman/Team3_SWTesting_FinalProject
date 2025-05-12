@@ -1,0 +1,33 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class EmptyPlaceholderChecker {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/v1/index.html");
+
+        WebElement usernameField = driver.findElement(By.id("user-name"));
+        WebElement passwordField = driver.findElement(By.id("password"));
+
+        String usernamePlaceholder = usernameField.getAttribute("placeholder");
+        String passwordPlaceholder = passwordField.getAttribute("placeholder");
+
+        if (usernamePlaceholder == null || usernamePlaceholder.isEmpty()) {
+            System.out.println("❌ Username field placeholder is empty.");
+        } else {
+            System.out.println("✅ Username field placeholder is set: " + usernamePlaceholder);
+        }
+
+        if (passwordPlaceholder == null || passwordPlaceholder.isEmpty()) {
+            System.out.println("❌ Password field placeholder is empty.");
+        } else {
+            System.out.println("✅ Password field placeholder is set: " + passwordPlaceholder);
+        }
+
+        driver.quit();
+    }
+}
