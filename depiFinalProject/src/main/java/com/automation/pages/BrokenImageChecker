@@ -1,0 +1,53 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
+
+public class BrokenImageChecker {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/v1/index.html");
+
+        List<WebElement> images = driver.findElements(By.tagName("img"));
+        int brokenCount = 0;
+
+        System.out.println("🔍 Checking images...");
+
+        for (WebElement img : images) {
+            try {
+                String imgUrl = img.getAttribute("src");
+
+                if (imgUrl == null || imgUrl.isEmpty()) {
+                    System.out.println("⚠️ Image src is empty.");
+                    continue;
+                }
+
+                HttpURLConnection connection = (HttpURLConnection) (new URL(imgUrl).openConnection());
+                connection.setRequestMethod("HEAD");
+                connection.connect();
+                int responseCode = connection.getResponseCode();
+
+                if (responseCode != 200) {
+                    System.out.println("❌ Broken image: " + imgUrl + " | Status: " + responseCode);
+                    brokenCount++;
+                } else {
+                    System.out.println("✅ OK: " + imgUrl);
+                }
+
+            } catch (Exception e) {
+                System.out.println("⚠️ Error checking image: " + e.getMessage());
+                brokenCount++;
+            }
+        }
+
+        System.out.println("\n📊 Broken image count: " + brokenCount);
+
+        driver.quit();
+    }
+}
