@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import com.automation.base.BaseTest;
 
-public class removefromcart extends BaseTest {
+public class checkout1 extends BaseTest {
 
     public class checkout1 {
         public WebDriver driver;
