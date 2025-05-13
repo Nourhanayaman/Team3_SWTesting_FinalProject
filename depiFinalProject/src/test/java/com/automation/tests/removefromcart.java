@@ -14,7 +14,9 @@ public class removefromcart extends BaseTest {
 
     private static Object removeButton;
     public WebDriver driver;
-    public AddANDremoveCart AddANDremoveCart;
+    //public AddANDremoveCart AddANDremoveCart;
+   AddANDremoveCart AddANDremoveCart=new AddANDremoveCart(driver);
+
     public WebDriverWait wait;
     public String pageTitle;
 
