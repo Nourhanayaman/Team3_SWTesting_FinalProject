@@ -11,8 +11,10 @@ public class checkout2 extends BaseTest {
 
 public class checkout2  {
     public WebDriver driver;
-      public AddANDremoveCart AddANDremoveCart;
-    public checkoutPage checkoutPage;
+     // public AddANDremoveCart AddANDremoveCart;
+   // public checkoutPage checkoutPage;
+   checkoutPage checkoutPage=new checkoutPage(driver);
+   AddANDremoveCart AddANDremoveCart=new AddANDremoveCart(driver);
 
     public WebDriverWait wait;
     public String pageTitle;
