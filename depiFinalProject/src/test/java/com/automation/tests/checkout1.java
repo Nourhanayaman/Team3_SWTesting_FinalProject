@@ -1,43 +1,42 @@
-package com.automation.tests;
-
+import Pages.AddANDremoveCart;
+import Pages.checkoutPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
     public class checkout1 {
         public WebDriver driver;
+       checkoutPage checkoutPage=new checkoutPage(driver);
+        //checkoutPage checkoutPage;
+        AddANDremoveCart AddNDremoveCart=new AddANDremoveCart(driver);
         public WebDriverWait wait;
+        public String pageTitle;
 
-
-            @Test
+        @Test
             public void testRemoveProductFromCart() {
+            AddANDremoveCart addCart= new AddANDremoveCart(driver);
                 SoftAssert softAssert = new SoftAssert();
 //add product to the cart
-                WebElement addToCartButton = driver.findElement(By.xpath("(//button[@class='btn_primary btn_inventory'])[1]"));
-                addToCartButton.click();
+AddANDremoveCart.getPageTitleText();
+               softAssert.assertEquals(pageTitle,"products","page title not as expected");
+
+                AddANDremoveCart.clickCartButton();
 //go to cart icon
-                WebElement cartIcon = driver.findElement(By.className("shopping_cart_link"));
-                cartIcon.click();
+                AddANDremoveCart cartIcon = AddANDremoveCart.clickCartIcon();
 //confirm we are in cart page
-                softAssert.assertTrue(driver.getCurrentUrl().contains("cart"), "not on Cart page");
 //Click continue shopping
-                WebElement continueShopping=driver.findElement(By.className("btn_secondary"));
-                continueShopping.click();
-                driver.findElement(By.className("checkout_button")).click();
-                //fill checkout fields
-                driver.findElement(By.id("first-name")).sendKeys("noureen");
-                driver.findElement(By.id("last-name")).sendKeys("alaa");
-                driver.findElement(By.id("postal-code")).sendKeys("67668");
-                //click continue doesntwork
-                driver.findElement(By.xpath("//input[@value='CONTINUE']")).click();
-                //continue
-                //then click finish
-                driver.findElement(By.xpath("//a[@text()='FINISH']")).click();
-                //assert the confirmation message
+checkoutPage checkoutPage=new checkoutPage(driver);
+checkoutPage.clickcheckoutButton();
+checkoutPage.enterFirstName("noureen");
+checkoutPage.enterLastName("alaa");
+checkoutPage.enterpostalcode("84297");
+checkoutPage.clickContinueCheckOutButton();
+checkoutPage.clickFinishButton();
+
                 WebElement confirmationMessage=wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("complete-header")));
                 softAssert.assertEquals(confirmationMessage.getText(),"THANK YOU FOR YOUR ORDER","Confirmation message as erxpected");
                 softAssert.assertAll();
