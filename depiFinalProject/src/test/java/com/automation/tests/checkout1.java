@@ -7,6 +7,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import com.automation.base.BaseTest;
+
+public class removefromcart extends BaseTest {
 
     public class checkout1 {
         public WebDriver driver;
