@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import com.automation.base.BaseTest;
+
+public class checkout2 extends BaseTest {
 
 public class checkout2  {
     public WebDriver driver;
