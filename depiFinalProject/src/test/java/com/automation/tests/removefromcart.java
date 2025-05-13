@@ -8,6 +8,9 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
+import com.automation.base.BaseTest;
+
+public class removefromcart extends BaseTest {
 
     private static Object removeButton;
     public WebDriver driver;
